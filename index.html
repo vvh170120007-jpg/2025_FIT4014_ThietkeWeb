@@ -1,0 +1,257 @@
+
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio - Hero & Skills Demo</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    :root{
+      --bg: #a80c8c;
+      --accent: #ff9b1f;
+      --primary: #1b1f3b;
+      --violet-1: #2b0066;
+      --violet-2: #7b2cff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(180deg,var(--bg),#ffffff);
+      color:var(--primary);
+    }
+    /* NAV */
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:18px 40px;
+      background:#fff;
+      position:sticky;
+      top:0;
+      z-index:20;
+      box-shadow:0 2px 6px rgba(10,10,10,0.04);
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:700;
+    }
+    .brand .logo{
+      width:36px; height:36px; border-radius:6px;
+      background: linear-gradient(135deg,#0ea5e9,#7c3aed);
+      display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;
+      box-shadow:0 3px 8px rgba(0,0,0,0.12);
+    }
+    .nav ul{display:flex;gap:22px; list-style:none; margin:0; padding:0}
+    .nav a{ text-decoration:none; color: #333; font-weight:600; padding:6px 8px; border-radius:6px;}
+    .nav a.active{ color:var(--violet-2); border-bottom:3px solid var(--violet-2); padding-bottom:4px; }
+
+    /* HERO SECTION */
+    .hero{
+      display:flex;
+      gap:40px;
+      align-items:center;
+      padding:48px 60px;
+      min-height:540px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-left{
+      width:52%;
+      max-width:840px;
+    }
+    .greeting{ font-size:40px; font-weight:800; color:#07122f; margin:0 0 6px;}
+    .name{ font-size:46px; font-weight:900; margin:0; }
+    .name .accent{ color:var(--accent); }
+    .subtitle{ margin-top:14px; color:#7b2f2f; font-weight:600; }
+    .cta{
+      margin-top:26px;
+      display:flex;
+      gap:18px;
+      align-items:center;
+    }
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;
+      background: linear-gradient(90deg,#2b2bff,#6b4bff);
+      color:#fff; padding:12px 18px; border-radius:999px; border:none; cursor:pointer;
+      box-shadow: 0 10px 30px rgba(55,20,150,0.18);
+      font-weight:700;
+    }
+    .socials{ display:flex; gap:12px; margin-top:20px; }
+    .sbtn{ width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#000;color:#0ff;box-shadow:0 6px 18px rgba(17,24,39,0.25);}
+
+    /* avatar circle with ring */
+    .hero-right{
+      width:48%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      position:relative;
+    }
+    .avatar-wrap{
+      width:320px; height:320px; border-radius:50%;
+      background: linear-gradient(90deg,#ffd54b,#ffb74d);
+      display:flex;align-items:center;justify-content:center;
+      box-shadow: 0 20px 50px rgba(99,49,255,0.15);
+      position:relative;
+      z-index:5;
+      overflow:hidden;
+      border:10px solid rgba(255,255,255,0.6);
+    }
+    .avatar-wrap img{ width:80%; height:auto; border-radius:50%; }
+
+    /* background network (simple decorative SVG) */
+    .network-bg{
+      position:absolute; inset:0; pointer-events:none; opacity:0.12; transform:scale(1.15);
+    }
+
+    /* SKILLS SECTION */
+    .skills-section{
+      padding:44px;
+      background: linear-gradient(90deg,#3c0073,#8f2bff);
+      color:#fff;
+    }
+    .skills-inner{
+      max-width:1100px;margin:0 auto;padding:30px;background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));border-radius:12px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    }
+    .skills-title{ text-align:center; font-size:28px; font-weight:800; margin-bottom:22px; color:#ffd;}
+    .skills-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+      gap:18px;
+      padding:18px;
+    }
+    .skill-card{
+      background: rgba(0,0,0,0.25); padding:18px;border-radius:10px; display:flex; flex-direction:column; align-items:center; gap:10px;
+      transition:transform 160ms ease, box-shadow 160ms ease;
+      text-align:center;
+    }
+    .skill-card:hover{ transform:translateY(-8px); box-shadow:0 18px 36px rgba(0,0,0,0.45); }
+    .skill-icon{ font-size:28px; color:#6be3ff; background:rgba(255,255,255,0.06); padding:12px;border-radius:10px; width:56px; height:56px; display:flex;align-items:center;justify-content:center;}
+    .skill-name{ font-weight:700; font-size:14px; color:#fff; }
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{ flex-direction:column; padding:26px; min-height:640px;}
+      .hero-left, .hero-right{ width:100%;}
+      .avatar-wrap{ width:240px; height:240px; margin-top:18px;}
+    }
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="brand">
+      <div class="logo">JS</div>
+      <div>
+        <div style="font-size:15px">Hoàng</div>
+        <div style="font-size:12px;color:#666;margin-top:2px">Danh mục đầu tư</div>
+      </div>
+    </div>
+
+    <nav>
+      <ul>
+        <li><a href="#" class="active">Trang Chủ</a></li>
+        <li><a href="#about">Về</a></li>
+        <li><a href="#skills">Kĩ Năng</a></li>
+        <li><a href="#work">Công Việc</a></li>
+        <li><a href="#contact">Liên hệ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-left">
+        <h3 class="greeting">Xin Chào</h3>
+        <h1 class="name">Tôi là Hoàng <span class="accent"></span></h1>
+        <div class="subtitle">Thông tin của tôi <strong style="color:#c72525">Web Development</strong></div>
+
+        <div class="cta">
+          <button class="btn"><i class="fa fa-user-circle"></i> Gioi thieu ve tôi</button>
+          <div style="display:flex; flex-direction:column; justify-content:center;">
+            <small style="color:#a9d710">Download CV</small>
+            <a href="#" style="color:#2b2bff; font-weight:700">PDF</a>
+          </div>
+        </div>
+
+        <div class="socials" aria-hidden>
+          <div class="sbtn"><i class="fa-brands fa-linkedin-in" style="color:#0e76a8"></i></div>
+          <div class="sbtn"><i class="fa-brands fa-github" style="color:#fff"></i></div>
+          <div class="sbtn"><i class="fa-brands fa-twitter" style="color:#0bc5cf"></i></div>
+          <div class="sbtn"><i class="fa-brands fa-instagram" style="color:#da15a5"></i></div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <!-- decorative svg network background -->
+        <svg class="network-bg" viewBox="0 0 1000 600" preserveAspectRatio="none">
+          <g fill="none" stroke="#000" stroke-opacity="0.2" stroke-width="1">
+            <line x1="50" y1="200" x2="160" y2="90"></line>
+            <line x1="160" y1="90" x2="260" y2="130"></line>
+            <line x1="260" y1="130" x2="420" y2="60"></line>
+            <line x1="420" y1="60" x2="520" y2="140"></line>
+            <line x1="520" y1="140" x2="730" y2="50"></line>
+            <line x1="760" y1="250" x2="640" y2="120"></line>
+            <circle cx="50" cy="200" r="3" fill="#000"/>
+            <circle cx="160" cy="90" r="3" fill="#000"/>
+            <circle cx="260" cy="130" r="3" fill="#000"/>
+            <circle cx="420" cy="60" r="3" fill="#000"/>
+            <circle cx="520" cy="140" r="3" fill="#000"/>
+            <circle cx="730" cy="50" r="3" fill="#000"/>
+            <circle cx="640" cy="120" r="3" fill="#000"/>
+            <circle cx="760" cy="250" r="3" fill="#000"/>
+          </g>
+        </svg>
+
+        <div class="avatar-wrap">
+          <img src="https://img.lovepik.com/photo/48014/8932.jpg_wh860.jpg" alt="avatar">
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="skills-section">
+      <div class="skills-inner">
+        <h2 class="skills-title">Kĩ năng và khả năng</h2>
+        <div class="skills-grid">
+          <!-- Lặp card: thay icon và tên tương ứng -->
+          <div class="skill-card"><div class="skill-icon"><i class="fa-brands fa-react"></i></div><div class="skill-name">ReactJS</div></div>
+          <div class="skill-card"><div class="skill-icon"><i class="fa-brands fa-node"></i></div><div class="skill-name">NodeJS</div></div>
+          <div class="skill-card"><div class="skill-icon"><i class="fa-brands fa-js-square"></i></div><div class="skill-name">JavaScript</div></div>
+          <div class="skill-card"><div class="skill-icon"><i class="fa-brands fa-css3-alt"></i></div><div class="skill-name">CSS3</div></div>
+          <div class="skill-card"><div class="skill-icon"><i class="fa-brands fa-android"></i></div><div class="skill-name">Android</div></div>
+          <div class="skill-card"><div class="skill-icon"><i class="fa-solid fa-database"></i></div><div class="skill-name">MySQL</div></div>
+          <div class="skill-card"><div class="skill-icon"><i class="fa-brands fa-github"></i></div><div class="skill-name">GitHub</div></div>
+          <div class="skill-card"><div class="skill-icon"><i class="fa-brands fa-aws"></i></div><div class="skill-name">AWS</div></div>
+          <div class="skill-card"><div class="skill-icon"><i class="fa-brands fa-bootstrap"></i></div><div class="skill-name">Bootstrap</div></div>
+          <div class="skill-card"><div class="skill-icon"><i class="fa-brands fa-php"></i></div><div class="skill-name">PHP</div></div>
+          <div class="skill-card"><div class="skill-icon"><i class="fa-brands fa-python"></i></div><div class="skill-name">Python</div></div>
+          <div class="skill-card"><div class="skill-icon"><i class="fa-brands fa-wordpress"></i></div><div class="skill-name">WordPress</div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // highlight active nav on click (simple)
+    document.querySelectorAll('.nav a').forEach(a=>{
+      a.addEventListener('click', e=>{
+        document.querySelectorAll('.nav a').forEach(x=>x.classList.remove('active'));
+        a.classList.add('active');
+      })
+    });
+  </script>
+</body>
+</html>
+# 2025_FIT4014_ThietkeWeb
